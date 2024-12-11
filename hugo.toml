@@ -1,5 +1,9 @@
 baseURL = 'https://blog-gamma-five-21.vercel.app/'
 languageCode = 'en-us'
 title = 'blogs'
-theme = 'photophobia'
-author = 'Lamp'
+theme = "hugo_theme_windy"
+enableRobotsTXT = true
+enableEmoji = true
+enableInlineShortcodes = true
+defaultContentLanguage = "en"
+copyright = "2024 Lamp - All rights reserved."

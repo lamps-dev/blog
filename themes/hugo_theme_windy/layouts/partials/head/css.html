@@ -1,0 +1,9 @@
+{{ $opts := dict
+  "targetPath" "css/style.css"
+  "enableSourceMap" (not hugo.IsProduction)
+}}
+
+{{ partial "block/load-scss.html" (dict "scss" "scss/style.scss" "options" $opts ) }}
+
+{{ partial "block/load-css.html" "css/main.css" }}
+{{ partial "block/load-css.html" "css/custom.css" }}

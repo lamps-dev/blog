@@ -1,9 +1,9 @@
-+++
-date = '2024-12-08T09:48:49+01:00'
-draft = false
-title = 'Hello World'
-author = 'Lamp'
-+++
+---
+date: "2024-12-08T09:48:49+01:00"
+draft: false
+title: "Hello World"
+author: "Lamp"
+---
 
 ## Introduction
 Hello, my name is lamp and i decided to make a subdomain dedicated to my blogs.

@@ -1,0 +1,30 @@
+name = 'Windy'
+license = 'Apache-2.0'
+licenselink = 'https://github.com/zEttOn86/hugo_theme_windy/blob/main/LICENSE'
+description = 'Website based on tailwindcss'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/zEttOn86/hugo_theme_windy/tree/main'
+
+# If you have a running demo of the theme
+demosite = 'https://zetton86.github.io/hugo_theme_windy/'
+
+# Taxonomy terms
+tags = ['blog', 'tailwindcss', 'dark']
+features = [
+  'responsive',
+  'dark',
+  'table of contents',
+  'json-ld',
+  'katex',
+  ]
+
+# If the theme has a single author
+[author]
+  name = 'zEttOn86'
+  homepage = 'https://zetton86.github.io/'
+
+[original]
+  author = "tomowang"
+  homepage = "https://hugo-theme-tailwind.tomo.dev/"
+  repo = "https://github.com/tomowang/hugo-theme-tailwind/tree/main"
