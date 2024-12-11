@@ -1,5 +1,5 @@
-baseURL = '/'
+baseURL = 'https://blog-gamma-five-21.vercel.app'
 languageCode = 'en-us'
 title = 'blogs'
 theme = 'photophobia'
-author = 'Your Name'
+author = 'Lamp'
