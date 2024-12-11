@@ -1,0 +1,11 @@
+<div class="recent-posts">
+    {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+      <article class="post-summary">
+        <h2><a href="{{ .RelativePermalink }}">{{ .Title }}</a></h2>
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{ with .Description }}
+          <p>{{ . }}</p>
+        {{ end }}
+      </article>
+    {{ end }}
+  </div>  
