@@ -1,11 +1,11 @@
 {
   "builds": [
     {
-      "src": "/*", 
-      "use": "@vercel/static-build",
+      "src": "/*",
+      "use": "@vercel/build-utils", 
       "config": {
-        "distDir": "public",
-        "installCommand": "cargo install zola"
+        "cmd": "cargo install zola && zola build",
+        "distDir": "public" 
       }
     }
   ]
