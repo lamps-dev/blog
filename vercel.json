@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "/*",
+      "use": "@vercel/build-utils",
+      "config": {
+        "cmd": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s stable -y && export PATH=\"$HOME/.cargo/bin:$PATH\" && cargo install zola && zola build",
+        "distDir": "public"
+      }
+    }
+  ]
+}
