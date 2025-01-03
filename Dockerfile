@@ -1,13 +1,14 @@
 FROM getzola/zola:latest
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy your Zola project files into the container
-COPY . . 
+# Copy ALL files and directories from your project
+COPY . /app
 
-# Expose the port Zola uses (usually 1111 in development)
-EXPOSE 1111 
+# (Optional) If your theme is in a separate Git submodule or needs a separate build step:
+# WORKDIR /app/themes/your-theme-name 
+# RUN npm install  # Or whatever command is needed to build your theme
 
-# Command to start Zola (adjust for your production command)
+EXPOSE 1111
+
 CMD ["zola", "serve"] 
