@@ -66,7 +66,8 @@ index_format = "elasticlunr_javascript"
 [extra]
 blog_section = "posts"
 
-
+author = "Lamp"
+author_bio = "I am a programmer from france."
 theme = "toggle"
 socials = [
   { name = "twitter", url = "https://twitter.com/lampytofficial", icon = "twitter" },
