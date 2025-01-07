@@ -1,0 +1,31 @@
+{% macro list_posts(pages) %}
+  <ul class="post-list">
+    {% for page in pages %}
+      <li class="post-item">
+        <a href="{{ page.permalink | safe }}">
+          <span class="post-title">{{ page.title }}</span>
+          <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro list_posts %}
+
+{% macro post_header(page) %}
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+        {{ page.date | date(format="%B %d, %Y") }}
+      </time>
+      {% if page.taxonomies.tags %}
+        <span class="post-tags">
+          {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">#{{ tag }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}
+    </p>
+  </header>
+{% endmacro post_header %}
+
