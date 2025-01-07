@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="{{ get_url(path="css/apollo.css") | safe }}">
 </head>
 <body>
     <header>
-        <h1>{{ config.title }}</h1>
+        <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
         <nav>
-            <a href="{{ config.base_url }}">Home</a>
-            <!-- Fix: Update the path to match your content structure -->
-            <a href="{{ get_url(path="posts") }}">Posts</a>
+            {% for item in config.extra.menu_items %}
+            <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">{{ item.name }}</a>
+            {% endfor %}
         </nav>
     </header>
     <main>
         {% block content %} {% endblock %}
     </main>
     <footer>
+        {% if config.extra.author %}
         <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }}</p>
+        {% else %}
+        <p>© {{ now() | date(format="%Y") }}</p>
+        {% endif %}
     </footer>
 </body>
 </html>
+
