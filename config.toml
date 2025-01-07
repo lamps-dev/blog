@@ -62,7 +62,7 @@ include_content = true
 index_format = "elasticlunr_javascript"
 
 [extra]
-#theme = "toggle"
+theme = "toggle"
 socials = [
   { name = "twitter", url = "https://twitter.com/lampytofficial", icon = "twitter" },
   { name = "github", url = "https://github.com/lamps-dev", icon = "github" },
