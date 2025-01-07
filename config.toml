@@ -1,6 +1,8 @@
 # The URL the site will be built for
 base_url = "https://blog.lamps-dev.dev"
 
+content_dir = "content"
+
 title = "Lamp's Blog"
 description = "Lamp's Own Blog For News"
 
@@ -62,6 +64,9 @@ include_content = true
 index_format = "elasticlunr_javascript"
 
 [extra]
+blog_section = "posts"
+
+
 theme = "toggle"
 socials = [
   { name = "twitter", url = "https://twitter.com/lampytofficial", icon = "twitter" },
