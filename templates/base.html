@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="{{ get_url(path="apollo.css") | safe }}">
+    {% block extra_head %}
+    {% endblock extra_head %}
 </head>
 <body>
     <header>
-        <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+        <a class="title" href="{{ config.base_url }}">
+            <h2>{{ config.title }}</h2>
+        </a>
         <nav>
-            {% if config.extra.menu_items %}
-                {% for item in config.extra.menu_items | sort(attribute="weight") %}
-                    <a href="{{ get_url(path=item.url) }}">{{ item.name }}</a>
-                {% endfor %}
-            {% endif %}
+            {% for item in config.extra.menu_items %}
+                <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">{{ item.name }}</a>
+            {% endfor %}
         </nav>
     </header>
     <main>
         {% block content %} {% endblock %}
     </main>
     <footer>
-        <p>© {{ now() | date(format="%Y") }} {% if config.extra.author %}{{ config.extra.author }}{% else %}{{ config.title }}{% endif %}</p>
+        <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }} • Powered by <a href="https://www.getzola.org">Zola</a></p>
     </footer>
 </body>
 </html>
