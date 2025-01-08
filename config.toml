@@ -63,6 +63,11 @@ index_format = "elasticlunr_javascript"
 
 [extra]
 blog_section = "posts"
+menu_items = [
+    { name = "/posts", url = "/posts", weight = 1 },
+    { name = "/projects", url = "/projects", weight = 2 },
+    { name = "/about", url = "/about", weight = 3 },
+    { name = "/tags", url = "/tags", weight = 4 },
 
 author = "Lamp"
 author_bio = "I am a programmer from france."
