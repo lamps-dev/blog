@@ -1,29 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ section.title }}</h1>
-
-<div class="posts">
-    {% for page in section.pages %}
-    <article>
-        <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
-        <span class="date">{{ page.date | date(format="%Y-%m-%d") }}</span>
-        {% if page.description %}
-        <p>{{ page.description }}</p>
-        {% endif %}
-    </article>
-    {% endfor %}
-</div>
-
-{% if paginator %}
-<nav class="pagination">
-    {% if paginator.previous %}
-    <a class="previous" href="{{ paginator.previous | safe }}">‹ Previous</a>
-    {% endif %}
-    {% if paginator.next %}
-    <a class="next" href="{{ paginator.next | safe }}">Next ›</a>
-    {% endif %}
-</nav>
-{% endif %}
+<h1 class="title">
+  {{ section.title }}
+</h1>
+<ul>
+  {% for page in section.pages %}
+  <li>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock content %}
 
