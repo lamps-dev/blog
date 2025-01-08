@@ -63,12 +63,6 @@ index_format = "elasticlunr_javascript"
 
 [extra]
 blog_section = "posts"
-menu_items = [
-    { name = "/posts", url = "/posts", weight = 1 },
-    { name = "/projects", url = "/projects", weight = 2 },
-    { name = "/about", url = "/about", weight = 3 },
-    { name = "/tags", url = "/tags", weight = 4 },
-
 author = "Lamp"
 author_bio = "I am a programmer from france."
 theme = "toggle"
@@ -77,10 +71,10 @@ socials = [
   { name = "github", url = "https://github.com/lamps-dev", icon = "github" },
   { name = "youtube", url = "https://youtube.com/@ilovelampadaire", icon = "youtube" },
 ]
-menu = [
-    { name = "/posts", url = "/posts", weight = 1 },
-    { name = "/projects", url = "/projects", weight = 2 },
-    { name = "/about", url = "/about", weight = 3 },
-    { name = "/tags", url = "/tags", weight = 4 },
+menu_items = [
+    { name = "Posts", url = "/posts", weight = 1 },
+    { name = "Projects", url = "/projects", weight = 2 },
+    { name = "About", url = "/about", weight = 3 },
+    { name = "Tags", url = "/tags", weight = 4 },
 ]
-# See this for more options: https://github.com/not-matthias/apollo/blob/main/config.toml#L14
+
