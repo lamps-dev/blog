@@ -4,20 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ get_url(path="css/apollo.css") | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path="apollo.css") | safe }}">
 </head>
 <body>
     <header>
         <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
         <nav>
             {% if config.extra.menu_items %}
-                {% for item in config.extra.menu_items %}
+                {% for item in config.extra.menu_items | sort(attribute="weight") %}
                     <a href="{{ item.url | safe }}">{{ item.name }}</a>
                 {% endfor %}
-            {% else %}
-                <a href="{{ config.base_url }}">Home</a>
-                <a href="{{ get_url(path="@/about.md") }}">About</a>
-                <a href="{{ get_url(path="@/posts/_index.md") }}">Posts</a>
             {% endif %}
         </nav>
     </header>
