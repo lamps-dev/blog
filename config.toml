@@ -1,15 +1,59 @@
 # The URL the site will be built for
 base_url = "https://blog.lamps-dev.dev"
 
-content_dir = "content"
-
+# Site title and description
 title = "Lamp's Blog"
 description = "Lamp's Own Blog For News"
 
+# Default language
 default_language = "en"
 
+# Theme
 theme = "apollo"
-taxonomies = [{ name = "tags" }]
+
+# Taxonomies
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[markdown]
+# Whether to do syntax highlighting
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+[slugify]
+paths_keep_dates = false
+
+[search]
+include_title = true
+include_description = false
+include_date = true
+include_path = false
+include_content = true
+index_format = "elasticlunr_javascript"
+
+[extra]
+# Put all your custom variables here
+author = "Lamp"
+github = "lamps-dev"
+twitter = "lampytofficial"
+youtube = "ilovelampadaire"
+
+# Menu items
+menu_items = [
+    { name = "Blog", url = "$BASE_URL" },
+    { name = "Tags", url = "$BASE_URL/tags" },
+    { name = "Archive", url = "$BASE_URL/archive" },
+    { name = "About", url = "$BASE_URL/about" },
+]
+
+# Theme options
+theme_color = "auto" # light, dark, auto
+
+content_dir = "content"
 
 output_dir = "public"
 
@@ -29,43 +73,11 @@ generate_sitemap = true
 
 generate_robots_txt = true
 
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
 
 [markdown]
-highlight_code = true
-highlight_theme = "base16-ocean-dark"
 render_emoji = false
 external_links_target_blank = false
 smart_punctuation = false
 bottom_footnotes = false
 lazy_async_image = false
-
-[slugify]
-paths_keep_dates = false
-
-[search]
-include_title = true
-include_description = false
-include_date = true
-include_path = false
-include_content = true
-index_format = "elasticlunr_javascript"
-
-[extra]
-blog_section = "posts"
-author = "Lamp"
-author_bio = "I am a programmer from france."
-theme = "toggle"
-socials = [
-  { name = "twitter", url = "https://twitter.com/lampytofficial", icon = "twitter" },
-  { name = "github", url = "https://github.com/lamps-dev", icon = "github" },
-  { name = "youtube", url = "https://youtube.com/@ilovelampadaire", icon = "youtube" },
-]
-menu_items = [
-    { name = "Posts", url = "/posts", weight = 1 },
-    { name = "Projects", url = "/projects", weight = 2 },
-    { name = "About", url = "/about", weight = 3 },
-    { name = "Tags", url = "/tags", weight = 4 },
-]
 
