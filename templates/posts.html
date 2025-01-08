@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 
+{% import "macros/post_macros.html" as post_macros %}
+
 {% block content %}
-<div class="posts">
-    {% for page in section.pages %}
-    <article>
-        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-        <span class="date">{{ page.date | date(format="%Y-%m-%d") }}</span>
-        {% if page.description %}
-        <p>{{ page.description }}</p>
-        {% endif %}
-    </article>
-    {% endfor %}
-</div>
+  <h1>{{ section.title }}</h1>
+  {{ section.content | safe }}
+
+  {{ post_macros::list_posts(pages=section.pages) }}
+
+  {% if paginator %}
+    <nav class="pagination">
+      {% if paginator.previous %}
+        <a class="previous" href="{{ paginator.previous | safe }}">‹ Previous</a>
+      {% endif %}
+      {% if paginator.next %}
+        <a class="next" href="{{ paginator.next | safe }}">Next ›</a>
+      {% endif %}
+    </nav>
+  {% endif %}
 {% endblock content %}
+
