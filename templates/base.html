@@ -10,20 +10,22 @@
     <header>
         <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
         <nav>
-            {% for item in config.extra.menu_items %}
-            <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">{{ item.name }}</a>
-            {% endfor %}
+            {% if config.extra.menu_items %}
+                {% for item in config.extra.menu_items %}
+                    <a href="{{ item.url | safe }}">{{ item.name }}</a>
+                {% endfor %}
+            {% else %}
+                <a href="{{ config.base_url }}">Home</a>
+                <a href="{{ get_url(path="@/about.md") }}">About</a>
+                <a href="{{ get_url(path="@/posts/_index.md") }}">Posts</a>
+            {% endif %}
         </nav>
     </header>
     <main>
         {% block content %} {% endblock %}
     </main>
     <footer>
-        {% if config.extra.author %}
-        <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }}</p>
-        {% else %}
-        <p>© {{ now() | date(format="%Y") }}</p>
-        {% endif %}
+        <p>© {{ now() | date(format="%Y") }} {% if config.extra.author %}{{ config.extra.author }}{% else %}{{ config.title }}{% endif %}</p>
     </footer>
 </body>
 </html>
