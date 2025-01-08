@@ -12,7 +12,7 @@
         <nav>
             {% if config.extra.menu_items %}
                 {% for item in config.extra.menu_items | sort(attribute="weight") %}
-                    <a href="{{ item.url | safe }}">{{ item.name }}</a>
+                    <a href="{{ get_url(path=item.url) }}">{{ item.name }}</a>
                 {% endfor %}
             {% endif %}
         </nav>
