@@ -1,30 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark light">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ get_url(path="apollo.css") | safe }}">
-    {% block extra_head %}
-    {% endblock extra_head %}
+
+    <meta property="og:title" content="{{ config.title }}" />
+    <meta property="og:description" content="{{ config.description }}" />
+    <meta name="description" content="{{ config.description }}" />
+
+    <link href="{{ get_url(path="fonts.css") | safe }}" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path="atom.xml") | safe }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ get_url(path="theme/light.css") | safe }}" />
+    <link id="darkModeStyle" rel="stylesheet" type="text/css" href="{{ get_url(path="theme/dark.css") | safe }}" />
+
+    <script src="{{ get_url(path="js/themetoggle.js") | safe }}"></script>
+    <script>setTheme(getSavedTheme());</script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ get_url(path="main.css") | safe }}" />
+
+    <script src="{{ get_url(path="js/mermaid.js") | safe }}"></script>
 </head>
+
 <body>
-    <header>
-        <a class="title" href="{{ config.base_url }}">
-            <h2>{{ config.title }}</h2>
-        </a>
-        <nav>
-            {% for item in config.extra.menu_items %}
-                <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">{{ item.name }}</a>
-            {% endfor %}
-        </nav>
-    </header>
-    <main>
-        {% block content %} {% endblock %}
-    </main>
-    <footer>
-        <p>© {{ now() | date(format="%Y") }} {{ config.extra.author }} • Powered by <a href="https://www.getzola.org">Zola</a></p>
-    </footer>
+    <div class="content">
+        <header>
+            <div class="main">
+                <a href="{{ config.base_url }}">{{ config.title }}</a>
+
+                <div class="socials">
+                    {% if config.extra.twitter %}
+                    <a rel="me" href="https://twitter.com/{{ config.extra.twitter }}" class="social">
+                        <img alt="twitter" src="{{ get_url(path="social_icons/twitter.svg") | safe }}">
+                    </a>
+                    {% endif %}
+                    {% if config.extra.github %}
+                    <a rel="me" href="https://github.com/{{ config.extra.github }}" class="social">
+                        <img alt="github" src="{{ get_url(path="social_icons/github.svg") | safe }}">
+                    </a>
+                    {% endif %}
+                    {% if config.extra.youtube %}
+                    <a rel="me" href="https://youtube.com/@{{ config.extra.youtube }}" class="social">
+                        <img alt="youtube" src="{{ get_url(path="social_icons/youtube.svg") | safe }}">
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <nav>
+                {% for item in config.extra.menu_items %}
+                <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}" style="margin-left: 0.5em">{{ item.name }}</a>
+                {% endfor %}
+                <a href="{{ get_url(path="tags") | safe }}" style="margin-left: 0.5em">Tags</a>
+
+                |<a id="dark-mode-toggle" onclick="toggleTheme(); event.preventDefault();" href="#">
+                    <img src="{{ get_url(path="feather/sun.svg") | safe }}" id="sun-icon" style="filter: invert(1);" alt="Light" />
+                    <img src="{{ get_url(path="feather/moon.svg") | safe }}" id="moon-icon" alt="Dark" />
+                </a>
+
+                <script>updateItemToggleTheme()</script>
+            </nav>
+        </header>
+
+        {% block content %}{% endblock content %}
+    </div>
 </body>
 </html>
 
